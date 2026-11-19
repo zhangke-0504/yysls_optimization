@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Short diagnostic capture only. System-wide VirtualAlloc stacks do not
+     identify safe-to-free game objects and can still add CPU/disk overhead. -->
+<WindowsPerformanceRecorder Version="1.0" Author="YYSLSDiagnostics">
+  <Profiles>
+    <SystemCollector Id="MinimalSystemCollector" Name="YYSLSDiagnostics Virtual Allocation">
+      <BufferSize Value="64" />
+      <Buffers Value="64" />
+    </SystemCollector>
+    <SystemProvider Id="MinimalSystemProvider">
+      <Keywords>
+        <Keyword Value="ProcessThread" />
+        <Keyword Value="Loader" />
+        <Keyword Value="VirtualAllocation" />
+      </Keywords>
+      <Stacks>
+        <Stack Value="VirtualAllocation" />
+      </Stacks>
+    </SystemProvider>
+    <Profile Id="VirtualAllocMinimal.Light.File" Name="VirtualAllocMinimal"
+             Description="Short bounded allocation-source diagnostic"
+             LoggingMode="File" DetailLevel="Light">
+      <Collectors>
+        <SystemCollectorId Value="MinimalSystemCollector">
+          <SystemProviderId Value="MinimalSystemProvider" />
+        </SystemCollectorId>
+      </Collectors>
+    </Profile>
+  </Profiles>
+</WindowsPerformanceRecorder>

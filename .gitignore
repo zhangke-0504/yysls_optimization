@@ -1,0 +1,14 @@
+/build/
+/out/
+/.vs/
+*.user
+__pycache__/
+*.pyc
+
+/.claude/
+/.codex/
+/.github/prompts/opsx-*.prompt.md
+/.github/skills/openspec-*/
+
+/observations/*
+!/observations/test_scripts/
